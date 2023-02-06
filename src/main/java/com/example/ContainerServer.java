@@ -47,8 +47,10 @@ public class ContainerServer {
         logger.info("Key-value sets are:");
 
         for (Map.Entry<String, Double> entry : infoMap.entrySet()) {
-            logger.info(entry.getKey() + " - " + entry.getValue());
+            logger.info(entry.getKey() + ": " + entry.getValue());
         }
+
+        CpuUtils.handleCpuLevel(infoMap.get("pv_power"), infoMap.get("battery_power"));
     }
 
     private static void startApplication(String[] args) {
